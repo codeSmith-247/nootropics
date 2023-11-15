@@ -102,7 +102,6 @@ export default function SignUp () {
 
     }
 
-    // console.log(process.env.GOOGLE_CLIENT_ID, "TESTING HERE");
 
     return (
         <section className="flex h-screen">
