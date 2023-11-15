@@ -1,11 +1,11 @@
 "use client"
-import React, { useState, ReactNode } from 'react'
+import React, { useState, ReactNode, useEffect } from 'react'
 
 import Image from "next/image";
 import Link  from "next/link";
 
-import { useRouter } from "next/navigation";
-import { signIn }    from 'next-auth/react';
+import { useRouter, useSearchParams } from "next/navigation";
+import { signIn }               from 'next-auth/react';
 
 import { BsHouse, BsEye, BsEyeSlash } from 'react-icons/bs';      
 
@@ -51,11 +51,12 @@ export default function SignUp () {
     const [ alert, setAlert ] = useState<{
         title: string | ReactNode,
         content: string | ReactNode,
-        load: boolean
+        load: boolean,
+        callback?: (confirmed: boolean) => any
     }>({
         title: "",
         content: "",
-        load: false
+        load: false,
     });
 
 
@@ -101,6 +102,55 @@ export default function SignUp () {
         setLoad(false);
 
     }
+
+    const params = useSearchParams();
+    const error = params.get("error");
+
+    useEffect( () => {
+
+        console.log(error, "params");
+    
+        if(error) {
+            
+            if(["OAuthCreateAccount", "EmailCreateAccount"].indexOf(error) > -1) {
+
+                setAlert({
+                    title: "Account Does Not Exists",
+                    content: "Please click \"Continue\" to create and account now",
+                    load: true,
+                    callback (confirmed: boolean) {
+                        if(confirmed)
+                        route("/signup");
+                    }
+                });
+                
+            }
+
+            else if(["OAuthAccountNotLinked"].indexOf(error) > -1) {
+
+                setAlert({
+                    title: "Use The Same Method",
+                    content: "Please use a different method or provide your credentials to log in",
+                    load: true,
+                });
+                
+            }
+
+            else /*(["OAuthSignin", "OAuthCallback", "Callback", "Default"].indexOf(error) > -1)*/ {
+
+                setAlert({
+                    title: "Network Error",
+                    content: "Please try again later",
+                    load: true
+                });
+
+            }
+        }
+
+    }, [error])
+    
+
+
 
 
     return (
