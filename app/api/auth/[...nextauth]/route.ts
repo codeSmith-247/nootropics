@@ -1,4 +1,4 @@
-import NextAuth, { Account, Profile, User, Session } from "next-auth";
+import NextAuth, { Account, Profile, User, Session, NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
@@ -83,7 +83,7 @@ export const OPTIONS = {
     //     return true;
     //     },
     // }
-}
+} satisfies NextAuthOptions
 
 const handler = NextAuth(OPTIONS);
 
