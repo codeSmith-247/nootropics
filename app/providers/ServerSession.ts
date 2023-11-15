@@ -1,7 +1,7 @@
 import type { GetServerSidePropsContext, NextApiRequest, NextApiResponse } from "next"
 import type { NextAuthOptions } from "next-auth"
 import { getServerSession } from "next-auth"
-import { OPTIONS as config } from "@/app/api/auth/[...nextauth]/route"
+import { OPTIONS as config } from "@/app/providers/options"
 
 
 // Use it in server contexts
