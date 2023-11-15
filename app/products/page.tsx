@@ -44,7 +44,7 @@ export default function Products() {
 
                     <div className=" grid-box-fill double flex-wrap gap-3 py-6">
                         {Array.from({length: 10}, (item, index) => 
-                            <div className="border rounded overflow-hidden hover:scale-100 scale-95 group">
+                            <div key={index} className="border rounded overflow-hidden hover:scale-100 scale-95 group">
                                 <div className="h-[250px] max-[500px]:h-[170px] w-full rounded overflow-hidden relative">
                                     <Image
                                         src="/images/bottle.webp"
