@@ -171,7 +171,7 @@ export default function SignUp () {
                         </div>
                         <div className="mb-6"></div>
                         <div className="">
-                            <div onClick={() => signIn("google")} className="flex items-center bg-[#DB4437] hover:bg-red-600 active:bg-red-700 p-0.5 rounded mb-3">
+                            <div onClick={() => signIn("google", { callbackUrl: "/products"})} className="flex items-center bg-[#DB4437] hover:bg-red-600 active:bg-red-700 p-0.5 rounded mb-3">
                                 <div className="icon relative h-[40px] w-[40px] bg-white p-1.5 overflow-hidden rounded">
                                     <Image
                                         src={"/images/google.png"}
