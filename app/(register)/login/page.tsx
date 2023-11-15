@@ -184,7 +184,7 @@ export default function SignUp () {
                                 <div className="text whitespace-nowrap px-3 text-center flex-grow text-white font-semibold"> Continue with Google</div>
                             </div>
 
-                            <div onClick={() => signIn("facebook")}  className="flex items-center bg-[#1877F2] hover:bg-blue-600 active:bg-blue-700 p-0.5 rounded">
+                            <div onClick={() => signIn("facebook", { callbackUrl: "/products"})}  className="flex items-center bg-[#1877F2] hover:bg-blue-600 active:bg-blue-700 p-0.5 rounded">
                                 <div className="icon relative h-[40px] w-[40px] bg-white overflow-hidden rounded">
                                     <Image
                                         src={"/images/facebook.webp"}
